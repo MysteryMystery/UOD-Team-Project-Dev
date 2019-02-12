@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace WindowsHardeningSuite.windowshardeningsuite.api.config
 {
-    public class ApplicationConfig : IConfig
+    public class ApplicationConfig : Config
     {
-        public String Debug { get; set; }
+        public Boolean Debug { get; set; } = false;
 
-        public Dictionary<String, Dictionary<String, String>> RegKeys {get; set;}
+        public Dictionary<String, Dictionary<String, String>> RegKeys { get; set; } = new Dictionary<string, Dictionary<string, string>>();
 
         public ApplicationConfig()
         {

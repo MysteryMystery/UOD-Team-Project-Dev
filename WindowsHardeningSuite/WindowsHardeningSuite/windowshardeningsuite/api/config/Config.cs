@@ -10,7 +10,7 @@ using System.IO;
 namespace WindowsHardeningSuite.windowshardeningsuite.api.config
 {
     [Serializable()]
-    public interface IConfig
+    public interface Config
     {
     }
 }
