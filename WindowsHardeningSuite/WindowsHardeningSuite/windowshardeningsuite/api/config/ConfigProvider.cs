@@ -20,7 +20,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.config
         /// <typeparam name="ConfigType">The class of the config type.</typeparam>
         /// <param name="path">Where the file is located</param>
         /// <returns>The loaded config if it exists, or a new config if it doesn't.</returns>
-        public static ConfigType Provide<ConfigType>(string path) where ConfigType : IConfig, new()
+        public static ConfigType Provide<ConfigType>(string path) where ConfigType : Config, new()
         {
             try
             {
@@ -38,9 +38,9 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.config
             }
         }
 
-        public static void Save(IConfig data, string path)
+        public static void Save(Config data, string path)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(IConfig));
+            XmlSerializer serializer = new XmlSerializer(typeof(Config));
             StreamWriter writer = new StreamWriter(path);
             serializer.Serialize(writer, data);
             writer.Close();
