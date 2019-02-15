@@ -12,7 +12,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.config
     /// <summary>
     /// Entry poi nt for all config files.
     /// </summary>
-    class ConfigProvider
+    public class ConfigProvider
     {
         /// <summary>
         /// Provides a config class.
