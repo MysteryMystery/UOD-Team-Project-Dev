@@ -9,17 +9,31 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
 {
     public class RegistryObject
     {
-        public string RegPath { get; private set; }
-        public string KeyName { get; private set; }
-        public object Value { get; private set; }
-        public RegistryValueKind RegistryValueKind { get; private set; }
+        public string RegPath { get; internal set; }
+        public string KeyName { get; internal set; }
+        public RegistryValueKind RegistryValueKind { get; internal set; }
 
-        RegistryObject(string regPath, string keyName, object value, RegistryValueKind registryValueKind)
+        public Type ValueType { get; internal set; } = typeof(object);
+    
+        internal RegistryObject(string regPath, string keyName, object value, RegistryValueKind registryValueKind)
         {
             RegPath = regPath;
             KeyName = keyName;
-            Value = value;
             RegistryValueKind = registryValueKind;
         }
+        
+        internal RegistryObject()
+        {
+        }
+    
+        public void Set(ValueType value)
+        {
+            using (RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(RegPath, true))
+            {
+                registryKey.SetValue(KeyName, value, RegistryValueKind);
+            }
+        }
+        
+        public static RegistryObjectBuilder Builder() => new RegistryObjectBuilder();
     }
 }
