@@ -10,7 +10,7 @@ using System.IO;
 namespace WindowsHardeningSuite.windowshardeningsuite.api.config
 {
     /// <summary>
-    /// Entry point for all config files.
+    /// Entry poi nt for all config files.
     /// </summary>
     class ConfigProvider
     {

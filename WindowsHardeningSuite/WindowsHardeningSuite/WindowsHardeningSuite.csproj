@@ -58,6 +58,7 @@
     <Compile Include="windowshardeningsuite\api\config\ApplicationConfig.cs" />
     <Compile Include="windowshardeningsuite\api\config\Config.cs" />
     <Compile Include="windowshardeningsuite\api\config\ConfigProvider.cs" />
+    <Compile Include="windowshardeningsuite\api\registry\key\RegistryObject.cs" />
     <Compile Include="windowshardeningsuite\api\registry\RegistryEditor.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
