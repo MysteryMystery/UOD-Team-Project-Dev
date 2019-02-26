@@ -9,6 +9,9 @@ using System.IO;
 
 namespace WindowsHardeningSuite.windowshardeningsuite.api.config
 {
+    /// <summary>
+    /// Denotes a config file
+    /// </summary>
     [Serializable()]
     public abstract class Config
     {
