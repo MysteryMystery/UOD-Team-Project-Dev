@@ -1,4 +1,5 @@
 using System;
+using WindowsHardeningSuite.Properties;
 using WindowsHardeningSuite.windowshardeningsuite.api.config;
 using WindowsHardeningSuite.windowshardeningsuite.api.registry.key;
 using Newtonsoft.Json;
@@ -10,6 +11,20 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
         public static void Main(string[] args)
         {
             //RegistryObject registryObject = ResourceProvider.ProvideJSON<RegistryObject>(Properties.Resources.keys);
+            LoadAppResource();
+        }
+
+        private static void LoadAppResource()
+        {
+            RegistryCollection registryCollection = ResourceProvider.ProvideJSON<RegistryCollection>(Resources.keys);
+            foreach (var key in registryCollection.RegKeys)
+            {
+                Console.WriteLine(key.DisplayName);
+            }
+        } 
+
+        private static void CreateAppResource()
+        {
             RegistryObject registryObject = new RegistryObject();
             registryObject.ValueKind = "Value Kind";
             registryObject.ValueType = "Value Type";
