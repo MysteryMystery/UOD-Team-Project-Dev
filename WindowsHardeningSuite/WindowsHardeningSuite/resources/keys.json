@@ -1,0 +1,17 @@
+{
+  "RegKeys":[
+    {
+      "ID":"Test Key",
+      "Location":"location",
+      "DisplayName":"Test Display Key",
+      "DisplayDescription":"Test display desc",
+      "ValueType":"Value Type",
+      "ValueKind":"Value Kind",
+      "PossibleValues":[
+        "Value 1",
+        "Value 2"
+      ],
+      "RecommendedValue":"Value 1"
+    }
+  ]
+}

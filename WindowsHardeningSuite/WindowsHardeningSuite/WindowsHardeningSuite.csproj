@@ -6,7 +6,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{CA0E637A-22A8-4884-B42D-46FF2ADF54C4}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>WindowsHardeningSuite</RootNamespace>
     <AssemblyName>WindowsHardeningSuite</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -27,6 +27,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\WindowsHardeningSuite.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -60,28 +61,13 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
     <Compile Include="windowshardeningsuite\api\config\ApplicationConfig.cs" />
     <Compile Include="windowshardeningsuite\api\config\Config.cs" />
     <Compile Include="windowshardeningsuite\api\config\ConfigProvider.cs" />
+    <Compile Include="windowshardeningsuite\api\config\ResourceProvider.cs" />
+    <Compile Include="windowshardeningsuite\api\registry\key\RegistryCollection.cs" />
     <Compile Include="windowshardeningsuite\api\registry\key\RegistryObject.cs" />
-    <Compile Include="windowshardeningsuite\api\registry\key\RegistryObjectBuilder.cs" />
-    <Compile Include="windowshardeningsuite\api\registry\RegistryEditor.cs" />
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="windowshardeningsuite\frontend\TestRunner.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -106,6 +92,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="resources\keys.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

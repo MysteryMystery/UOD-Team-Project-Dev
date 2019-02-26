@@ -14,6 +14,8 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.config
     /// </summary>
     public class ConfigProvider
     {
+        
+
         /// <summary>
         /// Provides a config class.
         /// </summary>

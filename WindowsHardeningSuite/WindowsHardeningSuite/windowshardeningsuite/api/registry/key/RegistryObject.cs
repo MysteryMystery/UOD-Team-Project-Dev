@@ -4,36 +4,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class RegistryObject
-    {
-        public string RegPath { get; internal set; }
-        public string KeyName { get; internal set; }
-        public RegistryValueKind RegistryValueKind { get; internal set; }
+    {   
+        [JsonProperty] public string ID { get; set; }
+        [JsonProperty] public string Location { get; set; }
+        [JsonProperty] public string DisplayName { get; set; }
+        [JsonProperty] public string DisplayDescription { get; set; }
+        [JsonProperty] public string ValueType { get; set; }
+        [JsonProperty] public string ValueKind { get; set; }
+        [JsonProperty] public string[] PossibleValues { get; set; }
+        [JsonProperty] public string RecommendedValue { get; set; }
 
-        public Type ValueType { get; internal set; } = typeof(object);
-    
-        internal RegistryObject(string regPath, string keyName, object value, RegistryValueKind registryValueKind)
+        public Type CSType => Type.GetType(ValueType);
+
+        public RegistryValueKind GetRegistryValueKind()
         {
-            RegPath = regPath;
-            KeyName = keyName;
-            RegistryValueKind = registryValueKind;
+            Enum.TryParse(ValueKind, out RegistryValueKind toReturn);
+            return toReturn;
         }
-        
-        internal RegistryObject()
+
+        public void SetValue(object value)
         {
+            if (value.GetType() != CSType)
+                throw new Exception("Cannot set key expecting " + CSType.ToString() +" with a " + value.GetType().ToString());
+            
+            //TODO add setting code with subkeys here
         }
-    
-        public void Set(ValueType value)
-        {
-            using (RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(RegPath, true))
-            {
-                registryKey.SetValue(KeyName, value, RegistryValueKind);
-            }
-        }
-        
-        public static RegistryObjectBuilder Builder() => new RegistryObjectBuilder();
     }
 }

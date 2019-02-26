@@ -10,8 +10,6 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.config
     {
         public Boolean Debug { get; set; } = false;
 
-        public Dictionary<String, Dictionary<String, String>> RegKeys { get; set; } = new Dictionary<string, Dictionary<string, string>>();
-
         public ApplicationConfig()
         {
             
