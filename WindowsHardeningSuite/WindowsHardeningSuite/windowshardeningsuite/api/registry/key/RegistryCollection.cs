@@ -2,6 +2,9 @@ using System;
 
 namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
 {
+    /// <summary>
+    /// Main resource class for the reg keys
+    /// </summary>
     [Serializable()]
     public class RegistryCollection
     {
