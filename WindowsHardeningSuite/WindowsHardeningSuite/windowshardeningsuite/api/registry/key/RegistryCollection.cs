@@ -18,15 +18,9 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
 
         public void Add(RegistryObject registryObject)
         {
-            var toBe = new RegistryObject[RegKeys.Length + 1];
-            int i;
-            for (i = 0; i < RegKeys.Length - 1; i++)
-            {
-                toBe[i] = RegKeys[i];
-            }
-
-            toBe[i++] = registryObject;
-            RegKeys = toBe;
+            List<RegistryObject> lst = new List<RegistryObject>(RegKeys);
+            lst.Add(registryObject);
+            RegKeys = lst.ToArray();
         }
     }
 }
