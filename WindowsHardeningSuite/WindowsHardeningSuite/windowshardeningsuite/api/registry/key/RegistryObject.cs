@@ -41,13 +41,13 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
         /// </summary>
         [JsonProperty] public string ValueKind { get; set; }
         /// <summary>
-        /// String representations of the possible values
-        /// </summary>
-        [JsonProperty] public string[] PossibleValues { get; set; }
-        /// <summary>
         /// String representation of the value which the application should set the key as
         /// </summary>
         [JsonProperty] public string RecommendedValue { get; set; }
+        /// <summary>
+        /// Windows versions that the key is present in 
+        /// </summary>
+        [JsonProperty] public string[] WindowsVersions { get; set; }
 
         public Type CSType => Type.GetType(ValueType);
 

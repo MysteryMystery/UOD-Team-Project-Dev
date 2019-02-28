@@ -28,7 +28,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
             RegistryObject registryObject = new RegistryObject();
             registryObject.ValueKind = "Value Kind";
             registryObject.ValueType = "Value Type";
-            registryObject.PossibleValues = new string[]
+            registryObject.WindowsVersions = new string[]
             {
                 "Value 1",
                 "Value 2"

@@ -67,6 +67,8 @@
     <Compile Include="windowshardeningsuite\api\config\ResourceProvider.cs" />
     <Compile Include="windowshardeningsuite\api\registry\key\RegistryCollection.cs" />
     <Compile Include="windowshardeningsuite\api\registry\key\RegistryObject.cs" />
+    <Compile Include="windowshardeningsuite\api\windows\EnumWindowsVersion.cs" />
+    <Compile Include="windowshardeningsuite\api\windows\VersionUtil.cs" />
     <Compile Include="windowshardeningsuite\frontend\TestRunner.cs" />
   </ItemGroup>
   <ItemGroup>

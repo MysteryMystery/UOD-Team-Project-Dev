@@ -7,7 +7,7 @@
       "DisplayDescription":"Test display desc",
       "ValueType":"Value Type",
       "ValueKind":"Value Kind",
-      "PossibleValues":[
+      "WindowsVersions":[
         "Value 1",
         "Value 2"
       ],
