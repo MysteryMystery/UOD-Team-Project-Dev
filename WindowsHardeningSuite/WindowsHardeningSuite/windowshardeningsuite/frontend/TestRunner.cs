@@ -16,6 +16,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
         {
             RegistryCollection registryCollection = ResourceProvider.ProvideJSON<RegistryCollection>(Resources.keys);
             registryCollection.RegKeysAsList.ForEach(key => key.SetValue(key.RecommendedValue));
+            
         }
 
         private static void LoadAppResource()
