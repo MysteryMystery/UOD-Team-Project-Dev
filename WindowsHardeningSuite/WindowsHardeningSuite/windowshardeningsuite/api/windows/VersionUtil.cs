@@ -1,6 +1,6 @@
 namespace WindowsHardeningSuite.windowshardeningsuite.api.windows
 {
-    public class VersionUtil
+    public static class VersionUtil
     {   
     }
 }

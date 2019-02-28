@@ -63,8 +63,23 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
                 throw new Exception("Cannot set key expecting " + CSType.ToString() +" with a " + value.GetType().ToString());
             
             //TODO Check if value is legal
+
+            
             
             Registry.SetValue(Location, ID, Convert.ChangeType(value, CSType), GetRegistryValueKind());
+        }
+
+        private bool TypeLegal(Type csType, RegistryValueKind registryValueKind)
+        {
+            if (
+                !(csType == typeof(bool) && registryValueKind == RegistryValueKind.Binary) 
+                
+                )
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
