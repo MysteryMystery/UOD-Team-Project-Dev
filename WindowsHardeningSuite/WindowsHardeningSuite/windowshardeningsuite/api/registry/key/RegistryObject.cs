@@ -71,7 +71,6 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
                 throw new Exception("Cannot set key expecting " + CSType.ToString() + " with a " +
                                     value.GetType().ToString());
 
-            //TODO Check if value is legal
             object toSet = value;
             if (value is string)
                 if (cases.ContainsKey(CSType))
@@ -80,19 +79,6 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
                     throw new NotImplementedException("Type not supported!");
 
             Registry.SetValue(Location, ID, Convert.ChangeType(toSet, CSType), GetRegistryValueKind());
-        }
-
-        private bool TypeLegal(Type csType, RegistryValueKind registryValueKind)
-        {
-            if (
-                !(csType == typeof(bool) && registryValueKind == RegistryValueKind.Binary) 
-                
-                )
-            {
-                return false;
-            }
-
-            return true;
         }
     }
 }
