@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -15,7 +16,14 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
     /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
     public class RegistryObject
-    {   
+    {
+        private Dictionary<Type, Func<String, object>> cases = new Dictionary<Type, Func<String, object>>
+        {
+            {typeof(bool), (x) => x == "true"},
+            {typeof(string), s => s},
+            {typeof(int), s => int.Parse(s)}
+        };
+        
         /// <summary>
         /// What windows knows the key as
         /// </summary>
@@ -60,13 +68,18 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
         public void SetValue(object value)
         {
             if (value.GetType() != CSType)
-                throw new Exception("Cannot set key expecting " + CSType.ToString() +" with a " + value.GetType().ToString());
-            
-            //TODO Check if value is legal
+                throw new Exception("Cannot set key expecting " + CSType.ToString() + " with a " +
+                                    value.GetType().ToString());
 
-            
-            
-            Registry.SetValue(Location, ID, Convert.ChangeType(value, CSType), GetRegistryValueKind());
+            //TODO Check if value is legal
+            object toSet = value;
+            if (value is string)
+                if (cases.ContainsKey(CSType))
+                    toSet = cases[CSType].Invoke(RecommendedValue);
+                else
+                    throw new NotImplementedException("Type not supported!");
+
+            Registry.SetValue(Location, ID, Convert.ChangeType(toSet, CSType), GetRegistryValueKind());
         }
 
         private bool TypeLegal(Type csType, RegistryValueKind registryValueKind)
