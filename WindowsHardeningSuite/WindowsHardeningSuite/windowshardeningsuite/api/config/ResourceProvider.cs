@@ -8,7 +8,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.config
     /// </summary>
     public class ResourceProvider
     {
-        public static T ProvideJSON<T>(byte[] resource) where T : new()
+        public static T ProvideJSON<T>(byte[] resource) where T : Resource
         {
             string jsonString = System.Text.Encoding.UTF8.GetString(resource);
             return JsonConvert.DeserializeObject<T>(jsonString);

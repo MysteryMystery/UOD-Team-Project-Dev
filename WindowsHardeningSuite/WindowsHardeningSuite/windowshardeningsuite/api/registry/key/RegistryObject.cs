@@ -17,9 +17,12 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
     [JsonObject(MemberSerialization.OptIn)]
     public class RegistryObject
     {
+        /// <summary>
+        /// Dictionary of delegates linking CSTypes with the string representations
+        /// </summary>
         private Dictionary<Type, Func<String, object>> cases = new Dictionary<Type, Func<String, object>>
         {
-            {typeof(bool), (x) => x == "true"},
+            {typeof(bool), s => s == "true"},
             {typeof(string), s => s},
             {typeof(int), s => int.Parse(s)}
         };
@@ -28,34 +31,46 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
         /// What windows knows the key as
         /// </summary>
         [JsonProperty] public string ID { get; set; }
+        
         /// <summary>
         /// Where the key is
         /// </summary>
         [JsonProperty] public string Location { get; set; }
+        
         /// <summary>
         /// Name to display to the GUI
         /// </summary>
         [JsonProperty] public string DisplayName { get; set; }
+        
         /// <summary>
         /// Description to display to GUI
         /// </summary>
         [JsonProperty] public string DisplayDescription { get; set; }
+        
         /// <summary>
         /// String representation of the class that the CS type should be
         /// </summary>
         [JsonProperty] public string ValueType { get; set; }
+        
         /// <summary>
         /// Value kind enum as string
         /// </summary>
         [JsonProperty] public string ValueKind { get; set; }
+        
         /// <summary>
         /// String representation of the value which the application should set the key as
         /// </summary>
         [JsonProperty] public string RecommendedValue { get; set; }
+        
         /// <summary>
         /// Windows versions that the key is present in 
         /// </summary>
         [JsonProperty] public string[] WindowsVersions { get; set; }
+        
+        /// <summary>
+        /// The category in which the key belongs to
+        /// </summary>
+        [JsonProperty] public string Category { get; set; }
 
         public Type CSType => Type.GetType(ValueType);
 
@@ -65,6 +80,12 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
             return toReturn;
         }
 
+        /// <summary>
+        /// Set the value of the key
+        /// </summary>
+        /// <param name="value">The value to set</param>
+        /// <exception cref="Exception">Thrown when the type of the argument does not match what it should be.</exception>
+        /// <exception cref="NotImplementedException">The datatype has not yet been catered for</exception>
         public void SetValue(object value)
         {
             if (value.GetType() != CSType)

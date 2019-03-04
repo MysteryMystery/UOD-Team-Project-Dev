@@ -30,7 +30,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.windows
          *     }
          * }
          */
-        public static Boolean isThisMachine(this EnumWindowsVersion windowsVersion)
+        public static Boolean IsThisMachine(this EnumWindowsVersion windowsVersion)
         {
             return true;
         }

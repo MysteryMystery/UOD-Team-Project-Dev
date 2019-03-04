@@ -67,7 +67,9 @@
     <Compile Include="windowshardeningsuite\api\config\ApplicationConfig.cs" />
     <Compile Include="windowshardeningsuite\api\config\Config.cs" />
     <Compile Include="windowshardeningsuite\api\config\ConfigProvider.cs" />
+    <Compile Include="windowshardeningsuite\api\config\Resource.cs" />
     <Compile Include="windowshardeningsuite\api\config\ResourceProvider.cs" />
+    <Compile Include="windowshardeningsuite\api\registry\key\KeyCategory.cs" />
     <Compile Include="windowshardeningsuite\api\registry\key\RegistryCollection.cs" />
     <Compile Include="windowshardeningsuite\api\registry\key\RegistryObject.cs" />
     <Compile Include="windowshardeningsuite\api\windows\EnumWindowsVersion.cs" />
@@ -105,6 +107,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="windowshardeningsuite\api\util" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

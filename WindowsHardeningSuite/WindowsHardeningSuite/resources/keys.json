@@ -11,7 +11,8 @@
       "WindowsVersions":[
         "Windows 10",
         "10.0.10240"
-      ]
+      ],
+      "Category":"Telemetry"
     },
     {
       "ID":"NoAutoUpdate",
@@ -24,7 +25,16 @@
       "WindowsVersions":[
         "Windows XP",
         "5.1.2600"
-      ]
+      ],
+      "Category":"Misc."
+    }
+  ],
+  "KeyCategories":[
+    {
+      "Name":"Misc."
+    },
+    {
+      "Name":"Telemetry"
     }
   ]
 }
