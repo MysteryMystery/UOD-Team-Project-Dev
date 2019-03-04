@@ -13,10 +13,10 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
     public class RegistryCollection : Resource
     {
         [JsonProperty]
-        public RegistryObject[] RegKeys { get; set; } = new RegistryObject[0];
-        [JsonProperty]
         public KeyCategory[] KeyCategories { get; set; } = new KeyCategory[0];
-
+        
+        [JsonProperty]
+        public RegistryObject[] RegKeys { get; set; } = new RegistryObject[0];
 
         public List<RegistryObject> RegKeysAsList => new List<RegistryObject>(RegKeys);
 
@@ -27,6 +27,10 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
             RegKeys = lst.ToArray();
         }
 
+        /// <summary>
+        /// Sorts the keys alphabetically
+        /// </summary>
+        //TODO add order by Category, alphabet ASC
         public void SortAlphabetically()
         {
             List<RegistryObject> lst = new List<RegistryObject>(RegKeys);
