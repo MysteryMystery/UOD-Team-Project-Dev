@@ -95,5 +95,13 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
 
             return cats;
         }
+
+        /// <summary>
+        /// Set all the loaded keys to their recommended values.
+        /// </summary>
+        public void SetAllRecommended()
+        {
+            RegKeysAsList.ForEach(key => key.SetValue(key.RecommendedValue));
+        }
     }
 }
