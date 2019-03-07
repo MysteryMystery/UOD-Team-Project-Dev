@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
 using WindowsHardeningSuite.windowshardeningsuite.api.config;
@@ -32,6 +33,18 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
         }
 
         public List<RegistryObject> RegKeysAsList => new List<RegistryObject>(RegKeys);
+
+        /// <summary>
+        /// @Depricated
+        /// Recommended to use this.RegKeysAsList.FindAll();
+        /// </summary>
+        /// <param name="function">The predicate</param>
+        /// <returns>Filtered list</returns>
+        [Obsolete]
+        public List<RegistryObject> Filter(Predicate<RegistryObject> function)
+        {
+            return RegKeysAsList.FindAll(function);
+        }
 
         public void Add(RegistryObject registryObject)
         {
