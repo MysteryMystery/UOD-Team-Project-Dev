@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using WindowsHardeningSuite.Properties;
 using WindowsHardeningSuite.windowshardeningsuite.api.config;
+using WindowsHardeningSuite.windowshardeningsuite.api.database;
 using WindowsHardeningSuite.windowshardeningsuite.api.registry.key;
+using LiteDB;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -24,6 +26,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
                     break;
                 case "test":
                 {
+                    DatabaseWrapper wrapper = DatabaseWrapper.GetInstance();
                     RegistryCollection registryCollection = ResourceProvider.ProvideJSON<RegistryCollection>(Resources.keys);
                     registryCollection.RegKeysAsList.ForEach(key => key.SetValue(key.RecommendedValue));
                     break;

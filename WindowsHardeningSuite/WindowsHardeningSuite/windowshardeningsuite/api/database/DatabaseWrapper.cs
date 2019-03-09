@@ -1,13 +1,25 @@
-using System;
-using System.CodeDom;
 using WindowsHardeningSuite.windowshardeningsuite.api.database.model;
 using LiteDB;
+using MahApps.Metro.Converters;
 
 namespace WindowsHardeningSuite.windowshardeningsuite.api.database
 {
-    public class DatabaseProvider
+    public class DatabaseWrapper
     {
+        private static DatabaseWrapper _instance;
         public LiteDatabase LiteDatabase => new LiteDatabase(@"ChangeTracking.db");
+
+        private DatabaseWrapper()
+        {
+            
+        }
+
+        public static DatabaseWrapper GetInstance()
+        {
+            if (_instance == null)
+                _instance = new DatabaseWrapper();
+            return _instance;
+        }
 
         public void Insert<T>(T row) where T : IDatabaseModel
         {

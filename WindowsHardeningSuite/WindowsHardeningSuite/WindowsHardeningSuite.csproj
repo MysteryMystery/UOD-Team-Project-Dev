@@ -90,7 +90,7 @@
     <Compile Include="windowshardeningsuite\api\config\ConfigProvider.cs" />
     <Compile Include="windowshardeningsuite\api\config\Resource.cs" />
     <Compile Include="windowshardeningsuite\api\config\ResourceProvider.cs" />
-    <Compile Include="windowshardeningsuite\api\database\DatabaseProvider.cs" />
+    <Compile Include="windowshardeningsuite\api\database\DatabaseWrapper.cs" />
     <Compile Include="windowshardeningsuite\api\database\model\IDatabaseModel.cs" />
     <Compile Include="windowshardeningsuite\api\database\model\Snapshot.cs" />
     <Compile Include="windowshardeningsuite\api\database\model\TrackedChange.cs" />
