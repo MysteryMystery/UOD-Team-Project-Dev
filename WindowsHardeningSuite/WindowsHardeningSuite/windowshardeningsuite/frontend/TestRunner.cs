@@ -15,9 +15,20 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
     {
         public static void Main(string[] args)
         {
-            /*RegistryCollection registryCollection = ResourceProvider.ProvideJSON<RegistryCollection>(Resources.keys);
-            registryCollection.RegKeysAsList.ForEach(key => key.SetValue(key.RecommendedValue));*/
-            CreateAppResource();
+            if (args.Length == 0)
+                return;
+            switch (args[0])
+            {
+                case "build":
+                    CreateAppResource();
+                    break;
+                case "test":
+                {
+                    RegistryCollection registryCollection = ResourceProvider.ProvideJSON<RegistryCollection>(Resources.keys);
+                    registryCollection.RegKeysAsList.ForEach(key => key.SetValue(key.RecommendedValue));
+                    break;
+                }
+            }
         }
 
         private static void LoadAppResource()

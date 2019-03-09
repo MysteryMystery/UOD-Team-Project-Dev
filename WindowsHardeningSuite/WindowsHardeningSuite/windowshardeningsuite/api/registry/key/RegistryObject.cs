@@ -88,14 +88,14 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
         /// <exception cref="NotImplementedException">The datatype has not yet been catered for</exception>
         public void SetValue(object value)
         {
-            if (value.GetType() != CSType)
+            if ((value.GetType() != typeof(string)) && (value.GetType() != CSType))
                 throw new Exception("Cannot set key expecting " + CSType.ToString() + " with a " +
                                     value.GetType().ToString());
 
             object toSet = value;
             if (value is string)
                 if (cases.ContainsKey(CSType))
-                    toSet = cases[CSType].Invoke(RecommendedValue);
+                    toSet = cases[CSType].Invoke((string) value);
                 else
                     throw new NotImplementedException("Type not supported!");
 

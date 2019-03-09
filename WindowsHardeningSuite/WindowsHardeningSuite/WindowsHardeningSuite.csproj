@@ -41,6 +41,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e">
       <HintPath>..\packages\ControlzEx.4.0.0-alpha0222\lib\net45\ControlzEx.dll</HintPath>
@@ -89,6 +92,7 @@
     <Compile Include="windowshardeningsuite\api\config\ResourceProvider.cs" />
     <Compile Include="windowshardeningsuite\api\database\DatabaseProvider.cs" />
     <Compile Include="windowshardeningsuite\api\database\model\IDatabaseModel.cs" />
+    <Compile Include="windowshardeningsuite\api\database\model\Snapshot.cs" />
     <Compile Include="windowshardeningsuite\api\database\model\TrackedChange.cs" />
     <Compile Include="windowshardeningsuite\api\registry\key\KeyCategory.cs" />
     <Compile Include="windowshardeningsuite\api\registry\key\RegistryCollection.cs" />
@@ -127,9 +131,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="windowshardeningsuite\api\util" />
+    <Folder Include="windowshardeningsuite\api\util\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="favicon.ico" />
     <Content Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
