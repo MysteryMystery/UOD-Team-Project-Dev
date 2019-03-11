@@ -16,7 +16,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
     public class RegistryCollection : Resource
     {
         private RegistryObject[] _regKeys = new RegistryObject[0];
-        
+
         [JsonProperty]
         public KeyCategory[] KeyCategories { get; set; } = new KeyCategory[0];
         
@@ -25,7 +25,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
         {
             get
             {
-                if (!IsSorted())
+                if (!IsSorted)
                     Sort();
                 return _regKeys;
             }
@@ -53,10 +53,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
             RegKeys = lst.ToArray();
         }
 
-        private bool IsSorted()
-        {
-            return false;
-        }
+        private bool IsSorted { get;  set; } = false;
 
         /// <summary>
         /// Sorts the keys
@@ -83,6 +80,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
             }
 
             RegKeys = toBe.ToArray();
+            IsSorted = true;
         }
 
         private Dictionary<String, List<RegistryObject>> Group()
