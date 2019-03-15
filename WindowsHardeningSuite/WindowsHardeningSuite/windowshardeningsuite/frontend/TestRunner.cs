@@ -28,6 +28,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
                 {
                     DatabaseWrapper wrapper = DatabaseWrapper.GetInstance();
                     RegistryCollection registryCollection = ResourceProvider.ProvideJSON<RegistryCollection>(Resources.keys);
+                    Console.WriteLine("Reg keys length: " + registryCollection.RegKeys.Length);
                     registryCollection.RegKeysAsList.ForEach(key => key.SetValue(key.RecommendedValue));
                     break;
                 }

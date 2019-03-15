@@ -25,8 +25,8 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
         {
             get
             {
-                if (!IsSorted)
-                    Sort();
+                //if (!IsSorted)
+                  //  Sort();
                 return _regKeys;
             }
             set => _regKeys = value;

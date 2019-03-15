@@ -20,11 +20,11 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
         /// <summary>
         /// Dictionary of delegates linking CSTypes with the string representations
         /// </summary>
-        private Dictionary<Type, Func<String, object>> cases = new Dictionary<Type, Func<String, object>>
+        private Dictionary<String, Func<String, object>> cases = new Dictionary<String, Func<String, object>>
         {
-            {typeof(bool), s => s == "true"},
-            {typeof(string), s => s},
-            {typeof(int), s => int.Parse(s)}
+            {"bool", s => s == "true"},
+            {"string", s => s},
+            {"int", s => int.Parse(s)}
         };
         
         /// <summary>
@@ -99,8 +99,8 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
 
             object toSet = value;
             if (value is string)
-                if (cases.ContainsKey(CSType))
-                    toSet = cases[CSType].Invoke((string) value);
+                if (cases.ContainsKey(ValueType))
+                    toSet = cases[ValueType].Invoke((string) value);
                 else
                     throw new NotImplementedException("Type not supported!");
 
