@@ -15,3 +15,23 @@ To set an individual key to recommended, do ```key.SetValue(key.RecommendedValue
 
 ## Libraries
 GUI Building: https://mahapps.com/
+Lite DB: http://www.litedb.org/
+
+## Recommended Application startup flow:
+
+```c#
+ DatabaseWrapper wrapper = DatabaseWrapper.GetInstance();
+ RegistryCollection registryCollection = ResourceProvider.ProvideJSON<RegistryCollection>(Resources.keys);
+ ```
+ 
+## On each key change...
+```c#
+TrackedChange change = new TrackedChange {
+	RegKeyId = key.id;
+	SetValue = key.RecommendedValue // OR key.OffValue
+	TimeStamp = new Date();
+};
+
+wrapper.Insert<TrackedChange>(change);
+key.SetValue(key.RecommendedValue);  // OR key.SetValue(key.OffValue);
+```
