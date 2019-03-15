@@ -63,6 +63,11 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
         [JsonProperty] public string RecommendedValue { get; set; }
         
         /// <summary>
+        /// String representation of off value
+        /// </summary>
+        [JsonProperty] public string OffValue { get; set; }
+        
+        /// <summary>
         /// Windows versions that the key is present in 
         /// </summary>
         [JsonProperty] public string[] WindowsVersions { get; set; }
