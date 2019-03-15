@@ -13,3 +13,5 @@ From there, I recommend linking each entry in the list view to ```RegistryObject
 Use ```RegistryCollection::SetAllRecommended()``` for the recommended settings.
 To set an individual key to recommended, do ```key.SetValue(key.RecommendedValue)```
 
+```
+
