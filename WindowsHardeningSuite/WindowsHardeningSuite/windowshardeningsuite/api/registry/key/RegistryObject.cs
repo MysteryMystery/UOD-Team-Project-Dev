@@ -77,7 +77,23 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
         /// </summary>
         [JsonProperty] public string Category { get; set; }
 
-        public Type CSType => Type.GetType(ValueType);
+        public Type CSType
+        {
+            get
+            {
+                switch (ValueType)
+                {
+                    case "string": 
+                        return typeof(String);
+                    case "int":
+                        return typeof(int);
+                    case "bool":
+                        return typeof(bool);
+                    default:
+                        throw new NotImplementedException("Unimplemented type!");
+                }
+            }
+        }
 
         public RegistryValueKind GetRegistryValueKind()
         {
@@ -104,7 +120,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
                 else
                     throw new NotImplementedException("Type not supported!");
 
-            Registry.SetValue(Location, ID, Convert.ChangeType(toSet, CSType), GetRegistryValueKind());
+            Registry.SetValue(Location, ID, toSet, GetRegistryValueKind());
         }
     }
 }
