@@ -1,0 +1,70 @@
+﻿<Controls:MetroWindow
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="WindowsHardeningSuite.windowshardeningsuite.frontend.UserInterface"
+		GlowBrush="{DynamicResource AccentColorBrush}"
+		TitleCaps="False"
+		Title="Little Brother Privacy Tool [WORK IN PROGRESS]" Height="450" Width="800" Icon="/WindowsHardeningSuite;component/favicon.ico" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+
+	<Controls:MetroWindow.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Controls:MetroWindow.Resources>
+
+	<Grid>
+		<Rectangle HorizontalAlignment="Left" Height="39.764" VerticalAlignment="Top" Width="800" Margin="-1,0,0,0">
+			<Rectangle.Fill>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<LinearGradientBrush.RelativeTransform>
+						<TransformGroup>
+							<ScaleTransform CenterY="0.5" CenterX="0.5"/>
+							<SkewTransform CenterY="0.5" CenterX="0.5"/>
+							<RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</LinearGradientBrush.RelativeTransform>
+					<GradientStop Color="#FF274690" Offset="0.385"/>
+					<GradientStop Color="#FF51C2F6" Offset="0.5"/>
+				</LinearGradientBrush>
+			</Rectangle.Fill>
+		</Rectangle>
+
+		<TabControl HorizontalAlignment="Left" Height="394.228" VerticalAlignment="Top" Width="800" Margin="-1,0,-6,0">
+			<TabItem Header="Home" Margin="488,0,-488,0" Background="{x:Null}">
+				<Grid>
+					<Image HorizontalAlignment="Left" Height="329.228" VerticalAlignment="Top" Width="332.677" Source="logo.png" Margin="10,10,0,0"/>
+					<Border BorderBrush="#FFE0E0E0" BorderThickness="1" HorizontalAlignment="Left" Height="38.583" VerticalAlignment="Top" Width="436.323" Margin="347.677,300.645,0,0">
+						<Grid>
+							<Controls:ToggleSwitch Cursor="Hand" Foreground="{x:Null}" Margin="357.323,1.181,6.457,-1.181"/>
+							<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enable Little Brother Recommended Privacy Tweaks:" VerticalAlignment="Center" FontSize="14" TextDecorations="{x:Null}" Margin="10,8.316,0,8.316" Width="353.78" FontStyle="Italic" FontWeight="Bold"/>
+						</Grid>
+					</Border>
+					<Border BorderBrush="#FFE0E0E0" BorderThickness="1" HorizontalAlignment="Left" Height="285.645" VerticalAlignment="Top" Width="436.323" Margin="347.677,10,0,0">
+						<Grid>
+							<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="263.645" Width="414.323" Margin="10,10,0,0" TextAlignment="Center" FontSize="13"><Run FontWeight="Bold" Text="Welcome to the Little Brother Privacy Tool!" TextDecorations="Underline"/><LineBreak/><Run/><LineBreak/><Run Text="With this tool you can configure various privacy-related features within Windows. To get going quick, "/><Run FontStyle="Italic" Text="Enable the Toggle below to configure the following options for optimal privacy protection..."/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Automatic Updates (Notify Only)."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Windows Telemetry."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Automatic Error Reporting."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- Other Stuff."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="ADD TO/UPDATE THIS LIST AS WE FINALISE THE APPLICATION!"/><LineBreak/><Run/><LineBreak/><Run Text="..."/><Run Text="You can undo these privacy protection measures at any time by Disabling the Toggle below. Additional privacy-related configuration options can be toggled under the Advanced section accessible above!"/></TextBlock>
+						</Grid>
+					</Border>
+				</Grid>
+			</TabItem>
+			<TabItem Header="Advanced" Margin="488,0,-488,0" Background="{x:Null}">
+				<Grid Background="Red"/>
+			</TabItem>
+			<TabItem Header="About" Margin="488,0,-488,0" Background="{x:Null}">
+				<Grid Background="Yellow"/>
+			</TabItem>
+		</TabControl>
+		<Border BorderThickness="1" HorizontalAlignment="Left" Height="28" Margin="-1,394.228,-6,-1.228" VerticalAlignment="Top" Width="800" Background="#FF51C2F6">
+			<TextBlock TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"><Run Text="DISCLAIMER: "/><Run FontWeight="Normal" Text="This Application modifies the Windows Registry in order to make these settings work - Use at your own risk!"/></TextBlock>
+		</Border>
+
+	</Grid>
+</Controls:MetroWindow>

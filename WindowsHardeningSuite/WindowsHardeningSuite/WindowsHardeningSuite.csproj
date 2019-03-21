@@ -45,17 +45,15 @@
     <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e">
-      <HintPath>..\packages\ControlzEx.4.0.0-alpha0222\lib\net45\ControlzEx.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
     </Reference>
     <Reference Include="LiteDB, Version=4.1.4.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27">
       <HintPath>..\packages\LiteDB.4.1.4\lib\net40\LiteDB.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f">
-      <HintPath>..\packages\MahApps.Metro.2.0.0-alpha0261\lib\net46\MahApps.Metro.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.6.5\lib\net46\MahApps.Metro.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.0.1\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
@@ -71,6 +69,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -99,8 +100,11 @@
     <Compile Include="windowshardeningsuite\api\registry\key\RegistryObject.cs" />
     <Compile Include="windowshardeningsuite\api\windows\EnumWindowsVersion.cs" />
     <Compile Include="windowshardeningsuite\api\windows\VersionUtil.cs" />
-    <Compile Include="windowshardeningsuite\frontend\ExampleStart.cs" />
+    <Compile Include="windowshardeningsuite\frontend\UserInterface.cs" />
     <Compile Include="windowshardeningsuite\frontend\TestRunner.cs" />
+    <Compile Include="windowshardeningsuite\frontend\UserInterface.xaml.cs">
+      <DependentUpon>UserInterface.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -135,8 +139,15 @@
     <Folder Include="windowshardeningsuite\api\util\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="windowshardeningsuite\frontend\logo.png" />
     <Resource Include="favicon.ico" />
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="windowshardeningsuite\frontend\UserInterface.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

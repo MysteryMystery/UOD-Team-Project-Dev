@@ -15,7 +15,8 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 {
     public class TestRunner
     {
-        public static void Main(string[] args)
+		[STAThread]
+		public static void Main(string[] args)
         {
             if (args.Length == 0)
                 return;
@@ -30,6 +31,11 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
                     RegistryCollection registryCollection = ResourceProvider.ProvideJSON<RegistryCollection>(Resources.keys);
                     Console.WriteLine("Reg keys length: " + registryCollection.RegKeys.Length);
                     registryCollection.RegKeysAsList.ForEach(key => key.SetValue(key.RecommendedValue));
+                    break;
+                }
+                case "test_gui":
+                {
+                    UserInterface.Init();
                     break;
                 }
             }
