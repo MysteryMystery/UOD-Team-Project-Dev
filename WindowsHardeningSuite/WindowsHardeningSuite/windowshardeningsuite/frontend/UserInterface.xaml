@@ -44,19 +44,48 @@
 					<Image HorizontalAlignment="Left" Height="329.228" VerticalAlignment="Top" Width="332.677" Source="logo.png" Margin="10,10,0,0"/>
 					<Border BorderBrush="#FFE0E0E0" BorderThickness="1" HorizontalAlignment="Left" Height="38.583" VerticalAlignment="Top" Width="436.323" Margin="347.677,300.645,0,0">
 						<Grid>
-							<Controls:ToggleSwitch Cursor="Hand" Foreground="{x:Null}" Margin="357.323,1.181,6.457,-1.181"/>
+							<Controls:ToggleSwitch Cursor="Hand" Foreground="{x:Null}" Margin="357.323,1.181,6.457,-1.181" Click="OnRecommendedButtonClick"/>
 							<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enable Little Brother Recommended Privacy Tweaks:" VerticalAlignment="Center" FontSize="14" TextDecorations="{x:Null}" Margin="10,8.316,0,8.316" Width="353.78" FontStyle="Italic" FontWeight="Bold"/>
 						</Grid>
 					</Border>
 					<Border BorderBrush="#FFE0E0E0" BorderThickness="1" HorizontalAlignment="Left" Height="285.645" VerticalAlignment="Top" Width="436.323" Margin="347.677,10,0,0">
 						<Grid>
-							<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="263.645" Width="414.323" Margin="10,10,0,0" TextAlignment="Center" FontSize="13"><Run FontWeight="Bold" Text="Welcome to the Little Brother Privacy Tool!" TextDecorations="Underline"/><LineBreak/><Run/><LineBreak/><Run Text="With this tool you can configure various privacy-related features within Windows. To get going quick, "/><Run FontStyle="Italic" Text="Enable the Toggle below to configure the following options for optimal privacy protection..."/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Automatic Updates (Notify Only)."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Windows Telemetry."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Automatic Error Reporting."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- Other Stuff."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="ADD TO/UPDATE THIS LIST AS WE FINALISE THE APPLICATION!"/><LineBreak/><Run/><LineBreak/><Run Text="..."/><Run Text="You can undo these privacy protection measures at any time by Disabling the Toggle below. Additional privacy-related configuration options can be toggled under the Advanced section accessible above!"/></TextBlock>
+							<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="263.645" Width="414.323" Margin="10,10,0,0" TextAlignment="Center" FontSize="13"><Run FontWeight="Bold" Text="Welcome to the Little Brother Privacy Tool!" TextDecorations="Underline"/><LineBreak/><Run/><LineBreak/><Run Text="With this tool you can configure various privacy-related features within Windows. To get going quick, "/><Run FontStyle="Italic" Text="Enable the Toggle below to configure the following options for optimal privacy protection..."/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Automatic Updates (Notify Only)."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Windows Telemetry."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Automatic Error Reporting."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Online Tips in Settings."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="ADD TO/UPDATE THIS LIST AS WE FINALISE THE APPLICATION!"/><LineBreak/><Run/><LineBreak/><Run Text="..."/><Run Text="You can undo these privacy protection measures at any time by Disabling the Toggle below. Additional privacy-related configuration options can be toggled under the Advanced section accessible above!"/></TextBlock>
 						</Grid>
 					</Border>
 				</Grid>
 			</TabItem>
 			<TabItem Header="Advanced" Margin="488,0,-488,0" Background="{x:Null}">
-				<Grid Background="Red"/>
+				<Grid>
+					<ScrollViewer HorizontalAlignment="Left" Height="355.469" VerticalAlignment="Top" Width="796" Margin="0,-5.219,0,-3.25">
+						<StackPanel Height="387.734" Width="750.688">
+							<Border BorderThickness="1" Height="100" Background="#FFE0E0E0">
+								<Grid>
+									<Controls:ToggleSwitch Header="Disable Automatic Windows Updates (Notify Only)?" HorizontalAlignment="Left" Height="98" VerticalAlignment="Top" Width="728.688" OffLabel="" OnLabel="" Margin="10,0,0,0"/>
+									<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,26,0,0" Width="651.653" Height="62" FontStyle="Italic"><Run Text="Specifies whether "/><Run Text="Windows "/><Run Text="will receive security updates and other"/><Run Text=" "/><Run Text="downloads through the Windows automatic updating service."/><Run Text=" Although highly recommended to keep your system up-to-date, this can also introduce unwanted privacy alterations."/><LineBreak/><Run Text="If you Enable this, these Updates will not be downloaded and installed automatically, but you will continue to be notified when they are available for you to then decide yourself."/></TextBlock>
+								</Grid>
+							</Border>
+							<Border BorderThickness="1" Height="100" Background="White">
+								<Grid>
+									<Controls:ToggleSwitch Header="Disable Windows Telemetry (Windows Pro/Education/Enterprise Only)?" HorizontalAlignment="Left" Height="98" VerticalAlignment="Top" Width="728.688" OffLabel="" OnLabel="" Margin="10,0,0,0"/>
+									<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,26,0,0" Width="651.653" Height="62" FontStyle="Italic"><Run Text="Specifies "/><Run Text="the amount of diagnostic and usage data reported to Microsoft."/><LineBreak/><Run Text="If you Enable this, Windows will only send the bare minimum data to function correctly (Anonymous Antivirus Security Data). Unfortunately due to the design of Windows, this will only take effect on Pro/Education/Enterprise Editions (Not Home)."/></TextBlock>
+								</Grid>
+							</Border>
+							<Border BorderThickness="1" Height="100" Background="#FFE0E0E0">
+								<Grid>
+									<Controls:ToggleSwitch Header="Disable Automatic Error Reporting?" HorizontalAlignment="Left" Height="98" VerticalAlignment="Top" Width="728.688" OffLabel="" OnLabel="" Margin="10,0,0,0"/>
+									<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,26,0,0" Width="651.653" Height="62" FontStyle="Italic"><Run Text="Specifies whether to "/><Run Text="turn off Windows Error Reporting, so that reports are not collected or sent to Microsoft when software unexpectedly stops working or fails."/><LineBreak/><Run Text="If you Enable this, Windows Error Reporting will be disabled and no Error Reporting data will be sent to Microsoft."/></TextBlock>
+								</Grid>
+							</Border>
+							<Border BorderThickness="1" Height="100" Background="White">
+								<Grid>
+									<Controls:ToggleSwitch Header="Disable Online Tips In Settings?" HorizontalAlignment="Left" Height="98" VerticalAlignment="Top" Width="728.688" OffLabel="" OnLabel="" Margin="10,0,0,0"/>
+									<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,26,0,0" Width="651.653" Height="62" FontStyle="Italic"><Run Text="Specifies whether to"/><Run Text=" "/><Run Text="retrieve "/><Run Text="online tips and help for the Settings app."/><LineBreak/><Run Text="If "/><Run Text="you Enable this"/><Run Text=", Settings will not contact Microsoft content services to retrieve tips and help content."/></TextBlock>
+								</Grid>
+							</Border>
+						</StackPanel>
+					</ScrollViewer>
+				</Grid>
 			</TabItem>
 			<TabItem Header="About" Margin="488,0,-488,0" Background="{x:Null}">
 				<Grid Background="Yellow"/>

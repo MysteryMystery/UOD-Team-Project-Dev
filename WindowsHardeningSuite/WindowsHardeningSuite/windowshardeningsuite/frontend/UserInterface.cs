@@ -7,53 +7,53 @@ using System.Windows;
 using WindowsHardeningSuite.windowshardeningsuite.api.config;
 using WindowsHardeningSuite.windowshardeningsuite.api.database;
 using WindowsHardeningSuite.windowshardeningsuite.api.registry.key;
+using MahApps.Metro.Controls;
 
 namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 {
-	/// <summary>
-	/// Change the class name to the main class...
-	/// </summary>
-	/*
-    class ExampleStart
-    {
-        private static ExampleStart _instance;
-
-        private DatabaseWrapper _dbWrapper;
-        private RegistryCollection _registryCollection;
-
-        public static ExampleStart GetInstance()
-        {
-            if (_instance == null)
-                _instance = new ExampleStart();
-            return _instance;
-        }
-
-        public DatabaseWrapper GetDatabaseWrapper()
-        {
-            if (_dbWrapper == null)
-                _dbWrapper = DatabaseWrapper.GetInstance();
-            return _dbWrapper;
-        }
-
-        public RegistryCollection GetRegistryCollection()
-        {
-            if (_registryCollection == null)
-                _registryCollection = ResourceProvider.ProvideJSON<RegistryCollection>(Properties.Resources.keys); 
-            return _registryCollection;
-        }
-    }
-	*/
-
 	public partial class UserInterface
 	{
+		private static UserInterface _instance;
+
+		private DatabaseWrapper _dbWrapper;
+		private RegistryCollection regCollection;
+
+		public static UserInterface GetInstance() // Do we really need this Method?
+		{
+			if (_instance == null)
+				_instance = new UserInterface();
+			return _instance;
+		}
+
+		public DatabaseWrapper GetDatabaseWrapper() // Ditto to the above.
+		{
+			if (_dbWrapper == null)
+				_dbWrapper = DatabaseWrapper.GetInstance();
+			return _dbWrapper;
+		}
+
+		public RegistryCollection GetRegistryCollection()
+		{
+			if (regCollection == null)
+				regCollection = ResourceProvider.ProvideJSON<RegistryCollection>(Properties.Resources.keys);
+			return regCollection;
+		}
+
 		public static void Init()
 		{
-			DatabaseWrapper dbWrapper = DatabaseWrapper.GetInstance();
-			RegistryCollection regCollection = ResourceProvider.ProvideJSON<RegistryCollection>(Properties.Resources.keys);
-
-			UserInterface userInterface = new UserInterface();
+			UserInterface userInterface = GetInstance();
 			Application userApplication = new Application();
 			userApplication.Run(userInterface);
+		}
+
+		void OnRecommendedButtonClick(object sender, RoutedEventArgs e)
+		{
+			bool isEnabled = ((ToggleSwitch)sender).IsChecked.Value;
+			
+			if (isEnabled)
+			{
+				regCollection.SetAllRecommended();
+			}
 		}
 	}
 }
