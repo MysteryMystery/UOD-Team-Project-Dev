@@ -52,7 +52,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 			
 			if (isEnabled)
 			{
-				regCollection.SetAllRecommended();
+				GetRegistryCollection().SetAllRecommended();
 			}
 		}
 	}
