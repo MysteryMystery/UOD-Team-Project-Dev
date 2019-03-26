@@ -114,5 +114,10 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
         {
             RegKeysAsList.ForEach(key => key.SetValue(key.RecommendedValue));
         }
+
+        public void SetAllOff()
+        {
+            RegKeysAsList.ForEach(key => key.SetValue(key.OffValue));
+        }
     }
 }
