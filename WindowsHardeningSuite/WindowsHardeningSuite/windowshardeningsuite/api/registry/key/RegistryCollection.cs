@@ -25,8 +25,9 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
         {
             get
             {
-                //if (!IsSorted)
-                  //  Sort();
+                if (!IsSorted)
+                    //  Sort();
+                    SortKeys();
                 return _regKeys;
             }
             set => _regKeys = value;
@@ -55,6 +56,17 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
 
         private bool IsSorted { get;  set; } = false;
 
+        private void SortKeys()
+        {
+            List<RegistryObject> registryKeys = RegKeysAsList;
+            registryKeys.Sort((x, y) => {
+                return String.Compare(x.DisplayName, y.DisplayName);
+            });
+            RegKeys = registryKeys.ToArray();
+
+            IsSorted = true;
+        }
+
         /// <summary>
         /// Sorts the keys
         /// </summary>
@@ -67,8 +79,8 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
                 List<RegistryObject> lst = new List<RegistryObject>(groups[key]);
                 lst.Sort((x, y) =>
                 {
-                    string xFull = x.Location + "\\" + x.Location;
-                    string yFull = y.Location + "\\" + y.Location;
+                    string xFull = x.DisplayName;
+                    string yFull = y.DisplayName;
                     return String.Compare(xFull, yFull, StringComparison.Ordinal);
                 });
                 groups[key] = lst;
