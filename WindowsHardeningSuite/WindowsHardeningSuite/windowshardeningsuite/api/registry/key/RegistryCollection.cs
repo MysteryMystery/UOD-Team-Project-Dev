@@ -62,6 +62,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
             registryKeys.Sort((x, y) => {
                 return String.Compare(x.DisplayName, y.DisplayName);
             });
+            Array.Resize<RegistryObject>(ref _regKeys, registryKeys.Count);
             RegKeys = registryKeys.ToArray();
 
             IsSorted = true;
