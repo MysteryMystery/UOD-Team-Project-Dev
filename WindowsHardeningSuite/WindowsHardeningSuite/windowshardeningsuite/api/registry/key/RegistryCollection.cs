@@ -33,7 +33,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
             set => _regKeys = value;
         }
 
-        public List<RegistryObject> RegKeysAsList => new List<RegistryObject>(RegKeys);
+        public List<RegistryObject> RegKeysAsList => RegKeys.ToList();
 
         /// <summary>
         /// @Depricated
