@@ -24,10 +24,7 @@
       "ValueKind": "DWord",
       "RecommendedValue": "false",
       "OffValue": "true",
-      "WindowsVersions": [
-        "Windows XP",
-        "5.1.2600"
-      ],
+      "WindowsVersions": [],
       "Category": "Misc."
     }
   ],

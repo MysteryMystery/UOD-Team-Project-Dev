@@ -51,6 +51,10 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 			{
 				GetRegistryCollection().SetAllRecommended();
 			}
+			else
+			{
+				GetRegistryCollection().SetAllOff();
+			}
 		}
 	}
 }
