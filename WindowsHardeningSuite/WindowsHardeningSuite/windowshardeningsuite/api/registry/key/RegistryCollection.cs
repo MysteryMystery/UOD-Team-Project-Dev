@@ -25,8 +25,8 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
         {
             get
             {
-                //if (!IsSorted)
-                  //  Sort();
+                if (!IsSorted)
+                  Sort();
                 return _regKeys;
             }
             set => _regKeys = value;
@@ -87,7 +87,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
         {
             Dictionary<String, List<RegistryObject>> cats = new Dictionary<string, List<RegistryObject>>();
 
-            foreach (var key in RegKeys)
+            foreach (var key in _regKeys)
             {
                 if (cats.ContainsKey(key.Category))
                 {

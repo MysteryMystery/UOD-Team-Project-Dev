@@ -27,16 +27,13 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 
 		public DatabaseWrapper GetDatabaseWrapper() // Ditto to the above.
 		{
-			if (_dbWrapper == null)
-				_dbWrapper = DatabaseWrapper.GetInstance();
-			return _dbWrapper;
+			return _dbWrapper ?? (_dbWrapper = DatabaseWrapper.GetInstance());
 		}
 
 		public RegistryCollection GetRegistryCollection()
 		{
-			if (regCollection == null)
-				regCollection = ResourceProvider.ProvideJSON<RegistryCollection>(Properties.Resources.keys);
-			return regCollection;
+			return regCollection ??
+			       (regCollection = ResourceProvider.ProvideJSON<RegistryCollection>(Properties.Resources.keys));
 		}
 
 		public static void Init()
