@@ -19,8 +19,10 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 		public static void Main(string[] args)
         {
             if (args.Length == 0)
-                return;
-            switch (args[0])
+            {
+                UserInterface.Init();
+            }
+            else switch (args[0])
             {
                 case "build":
                     CreateAppResource();

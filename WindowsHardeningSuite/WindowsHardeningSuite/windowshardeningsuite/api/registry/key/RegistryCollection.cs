@@ -73,10 +73,10 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
         private void Sort()
         {
             var toBe = new LinkedList<RegistryObject>();
-            var groups = Group();
+            Dictionary<String, List<RegistryObject>> groups = Group();
             foreach (var key in groups.Keys)
             {
-                List<RegistryObject> lst = new List<RegistryObject>(groups[key]);
+                List<RegistryObject> lst = groups[key];
                 lst.Sort((x, y) =>
                 {
                     string xFull = x.DisplayName;
