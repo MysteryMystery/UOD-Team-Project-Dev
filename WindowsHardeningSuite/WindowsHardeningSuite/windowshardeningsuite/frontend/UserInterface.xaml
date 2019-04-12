@@ -5,7 +5,7 @@
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="WindowsHardeningSuite.windowshardeningsuite.frontend.UserInterface"
 		GlowBrush="{DynamicResource AccentColorBrush}"
 		TitleCaps="False"
-		Title="Little Brother Privacy Tool [WORK IN PROGRESS]" Height="450" Width="800" Icon="/WindowsHardeningSuite;component/favicon.ico" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+		Title="Little Brother Privacy Tool" Height="450" Width="800" Icon="/WindowsHardeningSuite;component/favicon.ico" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
 
 	<Controls:MetroWindow.Resources>
 		<ResourceDictionary>
@@ -44,7 +44,7 @@
 					<Image HorizontalAlignment="Left" Height="329.228" VerticalAlignment="Top" Width="332.677" Source="logo.png" Margin="10,10,0,0"/>
 					<Border BorderBrush="#FFE0E0E0" BorderThickness="1" HorizontalAlignment="Left" Height="38.583" VerticalAlignment="Top" Width="436.323" Margin="347.677,300.645,0,0">
 						<Grid>
-							<Controls:ToggleSwitch Cursor="Hand" Foreground="{x:Null}" Margin="357.323,1.181,6.457,-1.181" Click="OnRecommendedButtonClick"/>
+							<Controls:ToggleSwitch x:Name="_RecommendedSettings" Cursor="Hand" Foreground="{x:Null}" Margin="357.323,1.181,6.457,-1.181" Click="OnSettingToggle"/>
 							<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enable Little Brother Recommended Privacy Tweaks:" VerticalAlignment="Center" FontSize="14" TextDecorations="{x:Null}" Margin="10,8.316,0,8.316" Width="353.78" FontStyle="Italic" FontWeight="Bold"/>
 						</Grid>
 					</Border>
@@ -58,37 +58,23 @@
 			<TabItem Header="Advanced" Margin="488,0,-488,0" Background="{x:Null}">
 				<Grid>
 					<ScrollViewer HorizontalAlignment="Left" Height="355.469" VerticalAlignment="Top" Width="796" Margin="0,-5.219,0,-3.25">
-						<StackPanel Height="387.734" Width="750.688">
-							<Border BorderThickness="1" Height="100" Background="#FFE0E0E0">
-								<Grid>
-									<Controls:ToggleSwitch Header="Disable Automatic Windows Updates (Notify Only)?" HorizontalAlignment="Left" Height="98" VerticalAlignment="Top" Width="728.688" OffLabel="" OnLabel="" Margin="10,0,0,0"/>
-									<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,26,0,0" Width="651.653" Height="62" FontStyle="Italic"><Run Text="Specifies whether "/><Run Text="Windows "/><Run Text="will receive security updates and other"/><Run Text=" "/><Run Text="downloads through the Windows automatic updating service."/><Run Text=" Although highly recommended to keep your system up-to-date, this can also introduce unwanted privacy alterations."/><LineBreak/><Run Text="If you Enable this, these Updates will not be downloaded and installed automatically, but you will continue to be notified when they are available for you to then decide yourself."/></TextBlock>
-								</Grid>
-							</Border>
-							<Border BorderThickness="1" Height="100" Background="White">
-								<Grid>
-									<Controls:ToggleSwitch Header="Disable Windows Telemetry (Windows Pro/Education/Enterprise Only)?" HorizontalAlignment="Left" Height="98" VerticalAlignment="Top" Width="728.688" OffLabel="" OnLabel="" Margin="10,0,0,0"/>
-									<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,26,0,0" Width="651.653" Height="62" FontStyle="Italic"><Run Text="Specifies "/><Run Text="the amount of diagnostic and usage data reported to Microsoft."/><LineBreak/><Run Text="If you Enable this, Windows will only send the bare minimum data to function correctly (Anonymous Antivirus Security Data). Unfortunately due to the design of Windows, this will only take effect on Pro/Education/Enterprise Editions (Not Home)."/></TextBlock>
-								</Grid>
-							</Border>
-							<Border BorderThickness="1" Height="100" Background="#FFE0E0E0">
-								<Grid>
-									<Controls:ToggleSwitch Header="Disable Automatic Error Reporting?" HorizontalAlignment="Left" Height="98" VerticalAlignment="Top" Width="728.688" OffLabel="" OnLabel="" Margin="10,0,0,0"/>
-									<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,26,0,0" Width="651.653" Height="62" FontStyle="Italic"><Run Text="Specifies whether to "/><Run Text="turn off Windows Error Reporting, so that reports are not collected or sent to Microsoft when software unexpectedly stops working or fails."/><LineBreak/><Run Text="If you Enable this, Windows Error Reporting will be disabled and no Error Reporting data will be sent to Microsoft."/></TextBlock>
-								</Grid>
-							</Border>
-							<Border BorderThickness="1" Height="100" Background="White">
-								<Grid>
-									<Controls:ToggleSwitch Header="Disable Online Tips In Settings?" HorizontalAlignment="Left" Height="98" VerticalAlignment="Top" Width="728.688" OffLabel="" OnLabel="" Margin="10,0,0,0"/>
-									<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,26,0,0" Width="651.653" Height="62" FontStyle="Italic"><Run Text="Specifies whether to"/><Run Text=" "/><Run Text="retrieve "/><Run Text="online tips and help for the Settings app."/><LineBreak/><Run Text="If "/><Run Text="you Enable this"/><Run Text=", Settings will not contact Microsoft content services to retrieve tips and help content."/></TextBlock>
-								</Grid>
-							</Border>
-						</StackPanel>
+						<StackPanel x:Name="AdvancedSettingsList" Width="750.688" Initialized="OnAdvancedSettingsListInit"/>
 					</ScrollViewer>
 				</Grid>
 			</TabItem>
 			<TabItem Header="About" Margin="488,0,-488,0" Background="{x:Null}">
-				<Grid Background="Yellow"/>
+				<Grid>
+					<GroupBox Header="Credits" HorizontalAlignment="Left" Height="180.37" VerticalAlignment="Top" Width="434.551" Margin="10,10,0,0">
+						<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Margin="0,0,-9.551,0" Width="434.551" TextAlignment="Justify"><Run FontStyle="Italic" Text="Application kindly brought to you b"/><Run FontStyle="Italic" Text="y the wondrous..."/><LineBreak/><Run FontWeight="Bold"/><LineBreak/><Run FontWeight="Bold" Text="&gt; James Attfield"/><Run FontWeight="Bold" Text="&#x9;"/><Run FontWeight="Bold" Text="&#x9;"/><Run FontWeight="Bold" Text="&#x9;"/><Run Text="(Top-Left)"/><LineBreak/><Run FontWeight="Bold" Text="&gt; Harry Bellis"/><Run FontWeight="Bold" Text="&#x9;"/><Run FontWeight="Bold" Text="&#x9;&#x9;"/><Run Text="(Top-Right)"/><LineBreak/><Run FontWeight="Bold" Text="&gt; Ben Bryce"/><Run FontWeight="Bold" Text="&#x9;"/><Run FontWeight="Bold" Text="&#x9;"/><Run FontWeight="Bold" Text="&#x9;"/><Run Text="(Bottom-Left)"/><LineBreak/><Run FontWeight="Bold" Text="&gt; Ryan Crouch"/><Run FontWeight="Bold" Text="&#x9;"/><Run FontWeight="Bold" Text="&#x9;"/><Run FontWeight="Bold" Text="&#x9;"/><Run Text="(Bottom-Right)"/></TextBlock>
+					</GroupBox>
+					<Image HorizontalAlignment="Left" Height="149.055" VerticalAlignment="Top" Width="149.055" Margin="467.087,187.945,0,0" Source="BenProfile.jpg"/>
+					<Image HorizontalAlignment="Left" Height="149.055" VerticalAlignment="Top" Width="149.055" Margin="636.945,10,0,0" Source="HarryProfile.png"/>
+					<Image HorizontalAlignment="Left" Height="149.055" VerticalAlignment="Top" Width="149.055" Source="JamesProfile.jpeg" Margin="467.087,10,0,0"/>
+					<Image HorizontalAlignment="Left" Height="149.055" VerticalAlignment="Top" Width="149.055" Source="RyanProfile.png" Margin="636.945,187.945,0,0"/>
+					<GroupBox Header="Website" HorizontalAlignment="Left" Height="128.638" VerticalAlignment="Top" Width="434.551" Margin="10,208.362,0,0">
+						<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,0,-9.551,0" Width="434.551" FontSize="18"><Run FontStyle="Italic" Text="For Application Updates, More Information, Assistance and Bug Reporting, please check out our Website!"/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="&gt; "/><Hyperlink NavigateUri="http://www.littlebrotherprivacy.xyz/" RequestNavigate="OnHyperlinkNavigate"><Run FontWeight="Bold" Text="www.littlebrotherprivacy.xyz"/></Hyperlink></TextBlock>
+					</GroupBox>
+				</Grid>
 			</TabItem>
 		</TabControl>
 		<Border BorderThickness="1" HorizontalAlignment="Left" Height="28" Margin="-1,394.228,-6,-1.228" VerticalAlignment="Top" Width="800" Background="#FF51C2F6">
