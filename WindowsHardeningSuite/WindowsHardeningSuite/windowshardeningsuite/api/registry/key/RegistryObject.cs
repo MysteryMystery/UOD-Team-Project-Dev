@@ -122,5 +122,11 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
 
             Registry.SetValue(Location, ID, toSet, GetRegistryValueKind());
         }
+
+        public Boolean Exists()
+        {
+            RegistryKey key = Registry.LocalMachine.OpenSubKey(Location, true);
+            return key.GetValueNames().Contains(ID);
+        }
     }
 }

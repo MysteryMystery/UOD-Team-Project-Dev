@@ -7,7 +7,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.database
     public class DatabaseWrapper
     {
         private static DatabaseWrapper _instance;
-        public LiteDatabase LiteDatabase => new LiteDatabase(@"ChangeTracking.db");
+        public LiteDatabase LiteDatabase => new LiteDatabase(@"LittleBrother.db");
 
         private DatabaseWrapper()
         {
