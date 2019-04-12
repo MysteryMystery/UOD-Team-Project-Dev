@@ -7,7 +7,11 @@ using System.Windows;
 using WindowsHardeningSuite.windowshardeningsuite.api.config;
 using WindowsHardeningSuite.windowshardeningsuite.api.database;
 using WindowsHardeningSuite.windowshardeningsuite.api.registry.key;
+using WindowsHardeningSuite.windowshardeningsuite.api.database.model;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using System.Windows.Navigation;
+using System.Diagnostics;
 
 namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 {
@@ -18,14 +22,14 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 		private DatabaseWrapper _dbWrapper;
 		private RegistryCollection regCollection;
 
-		public static UserInterface GetInstance() // Do we really need this Method?
+		public static UserInterface GetInstance()
 		{
 			if (_instance == null)
 				_instance = new UserInterface();
 			return _instance;
 		}
 
-		public DatabaseWrapper GetDatabaseWrapper() // Ditto to the above.
+		public DatabaseWrapper GetDatabaseWrapper()
 		{
 			return _dbWrapper ?? (_dbWrapper = DatabaseWrapper.GetInstance());
 		}
@@ -33,7 +37,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 		public RegistryCollection GetRegistryCollection()
 		{
 			return regCollection ??
-			       (regCollection = ResourceProvider.ProvideJSON<RegistryCollection>(Properties.Resources.keys));
+				(regCollection = ResourceProvider.ProvideJSON<RegistryCollection>(Properties.Resources.keys));
 		}
 
 		public static void Init()
@@ -43,18 +47,68 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 			userApplication.Run(userInterface);
 		}
 
-		void OnRecommendedButtonClick(object sender, RoutedEventArgs e)
+		async void OnSettingToggle(object sender, RoutedEventArgs e)
 		{
-			bool isEnabled = ((ToggleSwitch)sender).IsChecked.Value;
-			
-			if (isEnabled)
+			string toggleID = ((ToggleSwitch)sender).Name;
+			bool toggleEnabled = ((ToggleSwitch)sender).IsChecked.Value;
+
+			if (toggleID == "_RecommendedSettings")
 			{
-				GetRegistryCollection().SetAllRecommended();
+				if (toggleEnabled)
+				{
+					GetRegistryCollection().SetAllRecommended();
+					await this.ShowMessageAsync("Recommended Settings Enabled!", "Little Brother's Recommended Settings have been Enabled.");
+				}
+				else
+				{
+					GetRegistryCollection().SetAllOff();
+					await this.ShowMessageAsync("Recommended Settings Disabled!", "Little Brother's Recommended Settings have been Disabled.");
+				}
 			}
 			else
 			{
-				GetRegistryCollection().SetAllOff();
+				foreach (RegistryObject key in GetRegistryCollection().RegKeys)
+				{
+					string keyID = key.ID;
+
+					if (toggleID == keyID)
+					{
+						string keyName = key.DisplayName;
+						string newKeyValue;
+						string newKeyState;
+
+						if (toggleEnabled)
+						{
+							newKeyValue = key.RecommendedValue;
+							newKeyState = "Enabled";
+						}
+						else
+						{
+							newKeyValue = key.OffValue;
+							newKeyState = "Disabled";
+						}
+
+						TrackedChange newTrackerEntry = new TrackedChange // I feel this makes more sense in the Backend. What happens for the Recommended Batch Toggle Above?
+						{
+							RegKeyId = keyID,
+							SetValue = newKeyValue,
+							TimeStamp = new DateTime()
+						};
+
+						GetDatabaseWrapper().Insert<TrackedChange>(newTrackerEntry);
+						key.SetValue(newKeyValue);
+
+						await this.ShowMessageAsync("'" + keyName + "' Setting " + newKeyState + "!", "The '" + keyName + "' Setting has been " + newKeyState + ".");
+						break;
+					};
+				}
 			}
+		}
+
+		void OnHyperlinkNavigate(object sender, RequestNavigateEventArgs e)
+		{
+			Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+			e.Handled = true;
 		}
 	}
 }
