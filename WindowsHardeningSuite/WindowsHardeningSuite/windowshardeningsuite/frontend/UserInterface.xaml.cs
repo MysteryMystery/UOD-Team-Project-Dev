@@ -25,6 +25,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 		public UserInterface()
 		{
 			InitializeComponent();
+			_RecommendedSettings.IsChecked = false; //key.Exists(); // METHOD CURRENTLY BROKEN!
 		}
 
 		private void OnAdvancedSettingsListInit(object sender, EventArgs e)
@@ -65,7 +66,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 				_ToggleSwitch.Cursor = Cursors.Hand;
 				_ToggleSwitch.Name = key.ID;
 				_ToggleSwitch.Click += OnSettingToggle;
-				//_ToggleSwitch.IsChecked = ??? // Where do we get the Current Value of the Relevant Setting from?
+				_ToggleSwitch.IsChecked = false; //key.Exists(); // METHOD CURRENTLY BROKEN!
 
 				TextBlock _TextBlock = new TextBlock();
 				_Grid.Children.Add(_TextBlock);
