@@ -36,7 +36,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
         public List<RegistryObject> RegKeysAsList => RegKeys.ToList();
 
         /// <summary>
-        /// @Depricated
+        /// @Deprecated
         /// Recommended to use this.RegKeysAsList.FindAll();
         /// </summary>
         /// <param name="function">The predicate</param>
