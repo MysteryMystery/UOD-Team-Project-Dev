@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Windows.Controls.Primitives;
 using WindowsHardeningSuite.windowshardeningsuite.api.config;
 using Microsoft.Win32;
 
@@ -57,12 +58,20 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
 
         private void SortKeys()
         {
-            List<RegistryObject> registryKeys = RegKeys.ToList();
+            /*List<RegistryObject> registryKeys = RegKeys.ToList();
             registryKeys.Sort((x, y) => {
                 return String.Compare(x.DisplayName, y.DisplayName);
             });
             Array.Resize<RegistryObject>(ref _regKeys, registryKeys.Count);
-            RegKeys = registryKeys.ToArray();
+            RegKeys = registryKeys.ToArray();*/
+            
+            List<RegistryObject> registryKeys = RegKeys.ToList();
+            IOrderedEnumerable<RegistryObject> newKeys =
+                from registryObject in registryKeys
+                where true
+                orderby registryObject.Category, registryObject.ID
+                select registryObject;
+            RegKeys = newKeys.ToArray();
 
             IsSorted = true;
         }
