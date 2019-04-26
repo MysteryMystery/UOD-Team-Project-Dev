@@ -32,10 +32,32 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 		{
 			bool backgroundAlternative = true;
 			SolidColorBrush backgroundColor;
+			Dictionary<string, StackPanel> categoryList = new Dictionary<string, StackPanel>();
 
 			foreach (RegistryObject key in GetRegistryCollection().RegKeys)
 			{
+				StackPanel _StackPanel;
+
+				if (!categoryList.ContainsKey(key.Category))
+				{
+					Expander _Expander = new Expander();
+					_Expander.Header = key.Category;
+					_Expander.IsExpanded = true;
+					_Expander.Margin = new Thickness(1);
+
+					_StackPanel = new StackPanel();
+					_Expander.Content = _StackPanel;
+
+					AdvancedSettingsList.Children.Add(_Expander);
+					categoryList.Add(key.Category, _StackPanel);
+				}
+				else
+				{
+					_StackPanel = categoryList[key.Category];
+				}
+
 				Border _Border = new Border();
+				_StackPanel.Children.Add(_Border);
 				_Border.BorderThickness = new Thickness(1);
 				_Border.Height = 100;
 
@@ -63,7 +85,6 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 				_ToggleSwitch.OffLabel = "";
 				_ToggleSwitch.OnLabel = "";
 				_ToggleSwitch.Margin = new Thickness(10, 0, 0, 0);
-				_ToggleSwitch.Cursor = Cursors.Hand;
 				_ToggleSwitch.Name = key.ID;
 				_ToggleSwitch.Click += OnSettingToggle;
 				_ToggleSwitch.IsChecked = false; //key.Exists(); // METHOD CURRENTLY BROKEN!
@@ -78,8 +99,6 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 				_TextBlock.Height = 62;
 				_TextBlock.FontStyle = FontStyles.Italic;
 				_TextBlock.Text = key.DisplayDescription;
-
-				AdvancedSettingsList.Children.Add(_Border);
 			}
 		}
 	}

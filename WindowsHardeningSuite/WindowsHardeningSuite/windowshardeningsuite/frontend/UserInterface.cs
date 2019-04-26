@@ -88,7 +88,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 							newKeyState = "Disabled";
 						}
 
-						TrackedChange newTrackerEntry = new TrackedChange // I feel this makes more sense in the Backend. What happens for the Recommended Batch Toggle Above?
+						TrackedChange newTrackerEntry = new TrackedChange // I feel this makes more sense in the Backend. What happens for the Recommended Batch Toggle Above? UPDATE: Is this still needed at all?
 						{
 							RegKeyId = keyID,
 							SetValue = newKeyValue,
