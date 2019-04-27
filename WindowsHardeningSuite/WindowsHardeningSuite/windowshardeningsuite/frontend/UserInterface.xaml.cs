@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro;
 using MahApps.Metro.Controls;
 using WindowsHardeningSuite.windowshardeningsuite.api.database.model;
 using WindowsHardeningSuite.windowshardeningsuite.api.registry.key;
@@ -26,6 +27,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 		{
 			InitializeComponent();
 			_RecommendedSettings.IsChecked = false; //key.Exists(); // METHOD CURRENTLY BROKEN!
+			//ThemeManager.ChangeAppStyle(this, ThemeManager.GetAccent("Blue"), ThemeManager.GetAppTheme("BaseDark")); // Dark Theme - Unfinished!
 		}
 
 		private void OnAdvancedSettingsListInit(object sender, EventArgs e)

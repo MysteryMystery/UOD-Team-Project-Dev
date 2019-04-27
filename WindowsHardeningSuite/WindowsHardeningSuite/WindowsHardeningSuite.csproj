@@ -139,6 +139,7 @@
     <Folder Include="windowshardeningsuite\api\util\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="windowshardeningsuite\frontend\logo-no-words.png" />
     <Resource Include="windowshardeningsuite\frontend\RyanProfile.png" />
     <Resource Include="windowshardeningsuite\frontend\JamesProfile.jpeg" />
     <Resource Include="windowshardeningsuite\frontend\HarryProfile.png" />

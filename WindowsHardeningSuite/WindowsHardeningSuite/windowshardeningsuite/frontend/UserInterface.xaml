@@ -17,6 +17,10 @@
 				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
 				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
 			</ResourceDictionary.MergedDictionaries>
+			<Style TargetType="Expander" BasedOn="{StaticResource MetroExpander}">
+				<Setter Property="Controls:ControlsHelper.ContentCharacterCasing" Value="Normal"/>
+				<Setter Property="Controls:ControlsHelper.HeaderFontSize" Value="20"/>
+			</Style>
 		</ResourceDictionary>
 	</Controls:MetroWindow.Resources>
 
@@ -64,16 +68,17 @@
 			</TabItem>
 			<TabItem Header="About" Margin="488,0,-488,0" Background="{x:Null}">
 				<Grid>
-					<GroupBox Header="Credits" HorizontalAlignment="Left" Height="180.37" VerticalAlignment="Top" Width="434.551" Margin="10,10,0,0">
-						<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Margin="0,0,-9.551,0" Width="434.551" TextAlignment="Justify"><Run FontStyle="Italic" Text="Application kindly brought to you b"/><Run FontStyle="Italic" Text="y the wondrous..."/><LineBreak/><Run FontWeight="Bold"/><LineBreak/><Run FontWeight="Bold" Text="&gt; James Attfield"/><Run FontWeight="Bold" Text="&#x9;"/><Run FontWeight="Bold" Text="&#x9;"/><Run FontWeight="Bold" Text="&#x9;"/><Run Text="(Top-Left)"/><LineBreak/><Run FontWeight="Bold" Text="&gt; Harry Bellis"/><Run FontWeight="Bold" Text="&#x9;"/><Run FontWeight="Bold" Text="&#x9;&#x9;"/><Run Text="(Top-Right)"/><LineBreak/><Run FontWeight="Bold" Text="&gt; Ben Bryce"/><Run FontWeight="Bold" Text="&#x9;"/><Run FontWeight="Bold" Text="&#x9;"/><Run FontWeight="Bold" Text="&#x9;"/><Run Text="(Bottom-Left)"/><LineBreak/><Run FontWeight="Bold" Text="&gt; Ryan Crouch"/><Run FontWeight="Bold" Text="&#x9;"/><Run FontWeight="Bold" Text="&#x9;"/><Run FontWeight="Bold" Text="&#x9;"/><Run Text="(Bottom-Right)"/></TextBlock>
+					<GroupBox Header="Credits" HorizontalAlignment="Left" Height="187.37" VerticalAlignment="Top" Width="304.551" Margin="74,10,0,0" Controls:ControlsHelper.ContentCharacterCasing="Normal" Controls:ControlsHelper.HeaderFontSize="16">
+						<TextBlock TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TextAlignment="Center" Margin="0,0,0.449,-17.96"><Run FontStyle="Italic" Text="Little Brother Privacy Tool has been kindly crafted to protect your privacy by the following team on behalf of the University of Derby..."/><LineBreak/><Run FontWeight="Bold"/><LineBreak/><Run FontWeight="Bold" Text="&gt; James Attfield"/><Run FontWeight="Bold" Text=" "/><Run Text="(Top-Left)"/><LineBreak/><Run FontWeight="Bold" Text="&gt; Harry Bellis"/><Run FontWeight="Bold" Text=" "/><Run Text="(Top-Right)"/><LineBreak/><Run FontWeight="Bold" Text="&gt; Ben Bryce"/><Run FontWeight="Bold" Text=" "/><Run Text="(Bottom-Left)"/><LineBreak/><Run FontWeight="Bold" Text="&gt; Ryan Crouch"/><Run FontWeight="Bold" Text=" "/><Run Text="(Bottom-Right)"/></TextBlock>
 					</GroupBox>
-					<Image HorizontalAlignment="Left" Height="149.055" VerticalAlignment="Top" Width="149.055" Margin="467.087,187.945,0,0" Source="BenProfile.jpg"/>
-					<Image HorizontalAlignment="Left" Height="149.055" VerticalAlignment="Top" Width="149.055" Margin="636.945,10,0,0" Source="HarryProfile.png"/>
-					<Image HorizontalAlignment="Left" Height="149.055" VerticalAlignment="Top" Width="149.055" Source="JamesProfile.jpeg" Margin="467.087,10,0,0"/>
-					<Image HorizontalAlignment="Left" Height="149.055" VerticalAlignment="Top" Width="149.055" Source="RyanProfile.png" Margin="636.945,187.945,0,0"/>
-					<GroupBox Header="Website" HorizontalAlignment="Left" Height="128.638" VerticalAlignment="Top" Width="434.551" Margin="10,208.362,0,0">
-						<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,0,-9.551,0" Width="434.551" FontSize="18"><Run FontStyle="Italic" Text="For Application Updates, More Information, Assistance and Bug Reporting, please check out our Website!"/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="&gt; "/><Hyperlink NavigateUri="http://www.littlebrotherprivacy.xyz/" RequestNavigate="OnHyperlinkNavigate"><Run FontWeight="Bold" Text="www.littlebrotherprivacy.xyz"/></Hyperlink></TextBlock>
+					<Image HorizontalAlignment="Left" Height="149.055" VerticalAlignment="Top" Width="149.055" Margin="397.087,187.945,0,0" Source="BenProfile.jpg"/>
+					<Image HorizontalAlignment="Left" Height="149.055" VerticalAlignment="Top" Width="149.055" Margin="566.945,10,0,0" Source="HarryProfile.png"/>
+					<Image HorizontalAlignment="Left" Height="149.055" VerticalAlignment="Top" Width="149.055" Source="JamesProfile.jpeg" Margin="397.087,10,0,0"/>
+					<Image HorizontalAlignment="Left" Height="149.055" VerticalAlignment="Top" Width="149.055" Source="RyanProfile.png" Margin="566.945,187.945,0,0"/>
+					<GroupBox Header="Website" HorizontalAlignment="Left" Height="134.63" VerticalAlignment="Top" Width="304.551" Margin="74,202.37,0,0" Controls:ControlsHelper.ContentCharacterCasing="Normal" Controls:ControlsHelper.HeaderFontSize="16">
+						<TextBlock TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Margin="0,0,0.449,0" TextAlignment="Center"><Run FontStyle="Italic" Text="For Application Updates, More Information, Assistance and Bug Reporting, please check out our Website!"/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="&gt; "/><Hyperlink NavigateUri="http://www.littlebrotherprivacy.xyz/" RequestNavigate="OnHyperlinkNavigate"><Run FontWeight="Bold" Text="www.littlebrotherprivacy.xyz"/></Hyperlink></TextBlock>
 					</GroupBox>
+					<Image HorizontalAlignment="Left" Height="118.055" VerticalAlignment="Top" Width="118.055" Source="logo-no-words.png" Margin="496.89,114.945,0,0" Opacity="0.845"/>
 				</Grid>
 			</TabItem>
 		</TabControl>
