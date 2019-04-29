@@ -28,9 +28,9 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 
 		public UserInterface()
 		{
-			var winDarkEnabled = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme", true);
+			var winAppsUseLightTheme = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme", true);
 
-			if (winDarkEnabled == null || Convert.ToBoolean(winDarkEnabled))
+			if (winAppsUseLightTheme == null || Convert.ToBoolean(winAppsUseLightTheme))
 			{
 				darkThemeEnabled = false;
 			}
