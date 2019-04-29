@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro;
 using MahApps.Metro.Controls;
+using Microsoft.Win32;
 using WindowsHardeningSuite.windowshardeningsuite.api.database.model;
 using WindowsHardeningSuite.windowshardeningsuite.api.registry.key;
 
@@ -23,11 +24,28 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 	/// </summary>
 	public partial class UserInterface : MetroWindow
 	{
+		bool darkThemeEnabled;
+
 		public UserInterface()
 		{
+			var winDarkEnabled = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme", true);
+
+			if (winDarkEnabled == null || Convert.ToBoolean(winDarkEnabled))
+			{
+				darkThemeEnabled = false;
+			}
+			else
+			{
+				darkThemeEnabled = true;
+			}
+
 			InitializeComponent();
-			_RecommendedSettings.IsChecked = false; //key.Exists(); // METHOD CURRENTLY BROKEN!
-			//ThemeManager.ChangeAppStyle(this, ThemeManager.GetAccent("Blue"), ThemeManager.GetAppTheme("BaseDark")); // Dark Theme - Unfinished!
+			if (darkThemeEnabled)
+			{
+				ThemeManager.ChangeAppStyle(this, ThemeManager.GetAccent("Blue"), ThemeManager.GetAppTheme("BaseDark"));
+			}
+
+			_RecommendedSettings.IsChecked = false; // Need a Method for This!
 		}
 
 		private void OnAdvancedSettingsListInit(object sender, EventArgs e)
@@ -65,11 +83,18 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 
 				if (backgroundAlternative)
 				{
-					backgroundColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFE0E0E0"));
+					if (darkThemeEnabled)
+					{
+						backgroundColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF343434"));
+					}
+					else
+					{
+						backgroundColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFE0E0E0"));
+					}
 				}
 				else
 				{
-					backgroundColor = Brushes.White;
+					backgroundColor = Brushes.Transparent;
 				}
 				backgroundAlternative = !backgroundAlternative;
 				_Border.Background = backgroundColor;
@@ -98,7 +123,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 				_TextBlock.VerticalAlignment = VerticalAlignment.Top;
 				_TextBlock.Margin = new Thickness(10, 26, 0, 0);
 				_TextBlock.Width = 651.653;
-				_TextBlock.Height = 62;
+				_TextBlock.Height = 64;
 				_TextBlock.FontStyle = FontStyles.Italic;
 				_TextBlock.Text = key.DisplayDescription;
 			}

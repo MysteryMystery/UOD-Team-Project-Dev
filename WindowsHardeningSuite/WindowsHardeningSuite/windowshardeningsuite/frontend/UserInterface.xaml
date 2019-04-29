@@ -46,17 +46,18 @@
 			<TabItem Header="Home" Margin="488,0,-488,0" Background="{x:Null}">
 				<Grid>
 					<Image HorizontalAlignment="Left" Height="329.228" VerticalAlignment="Top" Width="332.677" Source="logo.png" Margin="10,10,0,0"/>
-					<Border BorderBrush="#FFE0E0E0" BorderThickness="1" HorizontalAlignment="Left" Height="38.583" VerticalAlignment="Top" Width="436.323" Margin="347.677,300.645,0,0">
+					<Border BorderBrush="#CC119EDA" BorderThickness="1" HorizontalAlignment="Left" Height="38.583" VerticalAlignment="Top" Width="436.323" Margin="347.677,300.645,0,0">
 						<Grid>
 							<Controls:ToggleSwitch x:Name="_RecommendedSettings" Cursor="Hand" Foreground="{x:Null}" Margin="357.323,1.181,6.457,-1.181" Click="OnSettingToggle"/>
 							<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enable Little Brother Recommended Privacy Tweaks:" VerticalAlignment="Center" FontSize="14" TextDecorations="{x:Null}" Margin="10,8.316,0,8.316" Width="353.78" FontStyle="Italic" FontWeight="Bold"/>
 						</Grid>
 					</Border>
 					<Border BorderBrush="#FFE0E0E0" BorderThickness="1" HorizontalAlignment="Left" Height="285.645" VerticalAlignment="Top" Width="436.323" Margin="347.677,10,0,0">
-						<Grid>
-							<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="263.645" Width="414.323" Margin="10,10,0,0" TextAlignment="Center" FontSize="13"><Run FontWeight="Bold" Text="Welcome to the Little Brother Privacy Tool!" TextDecorations="Underline"/><LineBreak/><Run/><LineBreak/><Run Text="With this tool you can configure various privacy-related features within Windows. To get going quick, "/><Run FontStyle="Italic" Text="Enable the Toggle below to configure the following options for optimal privacy protection..."/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Automatic Updates (Notify Only)."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Windows Telemetry."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Automatic Error Reporting."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Online Tips in Settings."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="ADD TO/UPDATE THIS LIST AS WE FINALISE THE APPLICATION!"/><LineBreak/><Run/><LineBreak/><Run Text="..."/><Run Text="You can undo these privacy protection measures at any time by Disabling the Toggle below. Additional privacy-related configuration options can be toggled under the Advanced section accessible above!"/></TextBlock>
-						</Grid>
+						<Grid/>
 					</Border>
+					<GroupBox Header="Welcome to the Little Brother Privacy Tool!" HorizontalAlignment="Left" Height="285.645" VerticalAlignment="Top" Width="436.323" Margin="347.677,10,0,0" Controls:ControlsHelper.ContentCharacterCasing="Normal" Controls:ControlsHelper.HeaderFontSize="16">
+						<TextBlock TextWrapping="Wrap" Margin="0,0,-0.323,-34.645" FontSize="13"><Run Text="With this tool you can configure various privacy-related features within Windows. To get going quick, "/><Run FontStyle="Italic" Text="Enable the Toggle below to configure the following options for optimal privacy protection..."/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Automatic Updates (Notify Only)."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Windows Telemetry."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Automatic Error Reporting."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="Disable Online Tips in Settings."/><LineBreak/><Run FontWeight="Bold" Text="🗸 "/><Run FontWeight="Bold" Text="- "/><Run FontWeight="Bold" Text="ADD TO/UPDATE THIS LIST AS WE FINALISE THE APPLICATION!"/><LineBreak/><Run/><LineBreak/><Run Text="..."/><Run Text="You can undo these privacy protection measures at any time by Disabling the Toggle below. Additional privacy-related configuration options can be toggled under the Advanced section accessible above!"/></TextBlock>
+					</GroupBox>
 				</Grid>
 			</TabItem>
 			<TabItem Header="Advanced" Margin="488,0,-488,0" Background="{x:Null}">
@@ -69,21 +70,21 @@
 			<TabItem Header="About" Margin="488,0,-488,0" Background="{x:Null}">
 				<Grid>
 					<GroupBox Header="Credits" HorizontalAlignment="Left" Height="187.37" VerticalAlignment="Top" Width="304.551" Margin="74,10,0,0" Controls:ControlsHelper.ContentCharacterCasing="Normal" Controls:ControlsHelper.HeaderFontSize="16">
-						<TextBlock TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TextAlignment="Center" Margin="0,0,0.449,-17.96"><Run FontStyle="Italic" Text="Little Brother Privacy Tool has been kindly crafted to protect your privacy by the following team on behalf of the University of Derby..."/><LineBreak/><Run FontWeight="Bold"/><LineBreak/><Run FontWeight="Bold" Text="&gt; James Attfield"/><Run FontWeight="Bold" Text=" "/><Run Text="(Top-Left)"/><LineBreak/><Run FontWeight="Bold" Text="&gt; Harry Bellis"/><Run FontWeight="Bold" Text=" "/><Run Text="(Top-Right)"/><LineBreak/><Run FontWeight="Bold" Text="&gt; Ben Bryce"/><Run FontWeight="Bold" Text=" "/><Run Text="(Bottom-Left)"/><LineBreak/><Run FontWeight="Bold" Text="&gt; Ryan Crouch"/><Run FontWeight="Bold" Text=" "/><Run Text="(Bottom-Right)"/></TextBlock>
+						<TextBlock TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Margin="0,0,0.449,-17.96"><Run FontStyle="Italic" Text="Little Brother Privacy Tool has been kindly crafted to protect your privacy by the following team on behalf of the University of Derby..."/><LineBreak/><Run FontWeight="Bold"/><LineBreak/><Run FontWeight="Bold" Text="&gt; James Attfield"/><Run FontWeight="Bold" Text="&#x9;&#x9;        "/><Run Text="(Top-Left)"/><LineBreak/><Run FontWeight="Bold" Text="&gt; Harry Bellis"/><Run FontWeight="Bold" Text="&#x9;&#x9;        "/><Run Text="(Top-Right)"/><LineBreak/><Run FontWeight="Bold" Text="&gt; Ben Bryce"/><Run FontWeight="Bold" Text="&#x9;&#x9;        "/><Run Text="(Bottom-Left)"/><LineBreak/><Run FontWeight="Bold" Text="&gt; Ryan Crouch"/><Run FontWeight="Bold" Text="&#x9;&#x9;        "/><Run Text="(Bottom-Right)"/></TextBlock>
 					</GroupBox>
 					<Image HorizontalAlignment="Left" Height="149.055" VerticalAlignment="Top" Width="149.055" Margin="397.087,187.945,0,0" Source="BenProfile.jpg"/>
 					<Image HorizontalAlignment="Left" Height="149.055" VerticalAlignment="Top" Width="149.055" Margin="566.945,10,0,0" Source="HarryProfile.png"/>
 					<Image HorizontalAlignment="Left" Height="149.055" VerticalAlignment="Top" Width="149.055" Source="JamesProfile.jpeg" Margin="397.087,10,0,0"/>
 					<Image HorizontalAlignment="Left" Height="149.055" VerticalAlignment="Top" Width="149.055" Source="RyanProfile.png" Margin="566.945,187.945,0,0"/>
 					<GroupBox Header="Website" HorizontalAlignment="Left" Height="134.63" VerticalAlignment="Top" Width="304.551" Margin="74,202.37,0,0" Controls:ControlsHelper.ContentCharacterCasing="Normal" Controls:ControlsHelper.HeaderFontSize="16">
-						<TextBlock TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Margin="0,0,0.449,0" TextAlignment="Center"><Run FontStyle="Italic" Text="For Application Updates, More Information, Assistance and Bug Reporting, please check out our Website!"/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="&gt; "/><Hyperlink NavigateUri="http://www.littlebrotherprivacy.xyz/" RequestNavigate="OnHyperlinkNavigate"><Run FontWeight="Bold" Text="www.littlebrotherprivacy.xyz"/></Hyperlink></TextBlock>
+						<TextBlock TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Margin="0,0,0.449,0"><Run FontStyle="Italic" Text="For Application Updates, More Information, Assistance and Bug Reporting, please check out our Website!"/><Run FontStyle="Italic" Text="..."/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="&gt; "/><Hyperlink NavigateUri="http://www.littlebrotherprivacy.xyz/"><Run FontWeight="Bold" Text="www.littlebrotherprivacy.xyz"/></Hyperlink></TextBlock>
 					</GroupBox>
 					<Image HorizontalAlignment="Left" Height="118.055" VerticalAlignment="Top" Width="118.055" Source="logo-no-words.png" Margin="496.89,114.945,0,0" Opacity="0.845"/>
 				</Grid>
 			</TabItem>
 		</TabControl>
 		<Border BorderThickness="1" HorizontalAlignment="Left" Height="28" Margin="-1,394.228,-6,-1.228" VerticalAlignment="Top" Width="800" Background="#FF51C2F6">
-			<TextBlock TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"><Run Text="DISCLAIMER: "/><Run FontWeight="Normal" Text="This Application modifies the Windows Registry in order to make these settings work - Use at your own risk!"/></TextBlock>
+			<TextBlock TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="Black"><Run Text="DISCLAIMER: "/><Run FontWeight="Normal" Text="This Application modifies the Windows Registry in order to make these settings work - Use at your own risk!"/></TextBlock>
 		</Border>
 
 	</Grid>
