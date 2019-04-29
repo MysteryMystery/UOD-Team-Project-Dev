@@ -125,8 +125,15 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
 
         public Boolean Exists()
         {
-            RegistryKey key = Registry.LocalMachine.OpenSubKey(Location, true);
-            return key.GetValueNames().Contains(ID);
+            try
+            {
+                RegistryKey key = Registry.LocalMachine.OpenSubKey(Location, true);
+                return key.GetValueNames().Contains(ID);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }
