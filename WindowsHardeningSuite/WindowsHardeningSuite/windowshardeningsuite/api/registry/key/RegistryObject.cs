@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Newtonsoft.Json;
 using NUnit.Framework.Constraints;
 
@@ -125,7 +126,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
 
         public Boolean Exists()
         {
-			var key = Registry.GetValue(Location, ID, null);
+			/*var key = Registry.GetValue(Location, ID, null);
 
 			if (key != null)
 			{
@@ -134,7 +135,9 @@ namespace WindowsHardeningSuite.windowshardeningsuite.api.registry.key
 			else
 			{
 				return false;
-			}
-		}
+			}*/
+
+            return Registry.GetValue(Location, ID, null) != null;
+        }
     }
 }
