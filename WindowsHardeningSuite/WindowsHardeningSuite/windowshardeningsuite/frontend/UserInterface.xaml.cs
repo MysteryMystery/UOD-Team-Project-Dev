@@ -30,7 +30,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 		{
 			var winAppsUseLightTheme = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme", true);
 
-			if (winAppsUseLightTheme == null || Convert.ToBoolean(winAppsUseLightTheme))
+			if (Convert.ToBoolean(winAppsUseLightTheme))
 			{
 				darkThemeEnabled = false;
 			}
@@ -114,7 +114,7 @@ namespace WindowsHardeningSuite.windowshardeningsuite.frontend
 				_ToggleSwitch.Margin = new Thickness(10, 0, 0, 0);
 				_ToggleSwitch.Name = key.ID;
 				_ToggleSwitch.Click += OnSettingToggle;
-				_ToggleSwitch.IsChecked = false; //key.Exists(); // METHOD CURRENTLY BROKEN!
+				_ToggleSwitch.IsChecked = key.Exists();
 
 				TextBlock _TextBlock = new TextBlock();
 				_Grid.Children.Add(_TextBlock);
